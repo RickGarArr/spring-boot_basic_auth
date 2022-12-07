@@ -1,6 +1,9 @@
 package com.rga.contacts.repositories;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Repository;
 import com.rga.contacts.domain.entities.Contact;
 
@@ -28,7 +31,7 @@ public class ContactsRepository {
     }
 
     public int deleteOne(Integer id) {
-        this.contacts = this.contacts.stream().filter(contact -> !contact.getId().equals(id)).toList();
+        this.contacts = this.contacts.stream().filter(contact -> !contact.getId().equals(id)).collect(Collectors.toList());
         return this.contacts.size();
     }
 }

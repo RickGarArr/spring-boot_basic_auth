@@ -27,6 +27,7 @@ public class SecurityConfig {
         .authorizeRequests()
         .antMatchers(HttpMethod.DELETE, "/delete/*/contact").hasRole("ADMIN")
         .antMatchers(HttpMethod.POST).hasAnyRole("ADMIN", "USER")
+        .antMatchers(HttpMethod.GET).permitAll()
         .anyRequest().authenticated()
         .and()
         .httpBasic()
